@@ -70,6 +70,40 @@ body {
     background-color: #fff;
 }
 
+.center-container {
+    font: normal normal 400 12px/normal dotum, sans-serif;
+    width: 640px;
+    height: 392px;
+    color: #333;
+    position: relative;
+}
+
+.center-container img {
+    border: 1px solid #ccc;
+}
+
+.info {
+    overflow: hidden;
+    padding: 7px 11px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0px 0px 2px 2px;
+    background-color: rgb(249, 249, 249);
+}
+
+.info a {
+    color: #000;
+    text-decoration: none;
+}
+
+.info span {
+    width: 1px;
+    margin: 0 8px 0 9px;
+    height: 11px;
+    vertical-align: top;
+    position: relative;
+    top: 2px;
+    border-left: 1px solid #d0d0d0;
+}
 
 [tabindex="-1"]:focus {
     outline: 0 !important;
@@ -9919,8 +9953,8 @@ body {
 }
 
 .ww-gift-section .gift-columns .gift {
-    flex: 1 1 calc(16.66% - 15px); /* 화면 너비의 6등분 */
-    max-width: calc(16.66% - 15px);
+    flex: 1 1 calc(20% - 15px); /* 화면 너비의 5등분 */
+    max-width: calc(20% - 15px);
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
     margin: 0;
     border: none;
