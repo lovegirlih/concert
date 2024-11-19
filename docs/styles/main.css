@@ -9495,8 +9495,8 @@ button.bg-dark:focus {
     text-align: center !important;
 }
 
-.red-text {
-    color: red;
+.blue-text {
+    color: blue;
 }
 
 @media (min-width: 576px) {
@@ -9919,8 +9919,8 @@ body {
 }
 
 .ww-gift-section .gift-columns .gift {
-    flex: 1 1 calc(33.33% - 30px); /* 화면 너비의 3등분 */
-    max-width: calc(33.33% - 30px);
+    flex: 1 1 calc(16.66% - 15px); /* 화면 너비의 6등분 */
+    max-width: calc(16.66% - 15px);
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
     margin: 0;
     border: none;
@@ -9928,6 +9928,13 @@ body {
 }
 
 /* 작은 화면에서는 열 수를 줄임 */
+@media (max-width: 1024px) {
+    .ww-gift-section .gift-columns .gift {
+        flex: 1 1 calc(33.33% - 15px); /* 3열 레이아웃 */
+        max-width: calc(33.33% - 15px);
+    }
+}
+
 @media (max-width: 768px) {
     .ww-gift-section .gift-columns .gift {
         flex: 1 1 calc(50% - 15px); /* 2열 레이아웃 */

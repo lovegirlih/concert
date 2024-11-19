@@ -38,43 +38,9 @@
             })();
         }
 
-        function findGetParameter(parameterName) {
-            var result = null,
-                tmp = [];
-            location.search
-                .substr(1)
-                .split("&")
-                .forEach(function (item) {
-                  tmp = item.split("=");
-                  if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-                });
-            return result;
-        }
-
         $(document).ready(function () {
 
-            function getText(){
-                var result = null;
-                $.ajax( { url: "https://raw.githubusercontent.com/AndersonChoi/wedding-card/master/README.md",
-                        type: 'get',
-                        dataType: 'html',
-                        async: false,
-                        success: function(data) { result = data; }
-                    }
-                );
-                FileReady = true;
-                return result;
-            }
-            var markdown_source = getText();
-            var comment_contents = markdown_source.split("축하의 말")[1];
 
-            var md = new Remarkable();
-            $("#comments").append(md.render(comment_contents));
-
-            
-            if(findGetParameter('gift')=='false'){
-                $('#gifts').hide();
-            }
         });
     </script>
 </head>
@@ -103,7 +69,7 @@
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#main">포스터</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#bible">주제성구</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#list">곡 리스트</a></li>
-                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#todo">역할</a></li>
+                            <li class="nav-item"><a class="nav-link smooth-scroll" href="#introduce">청년들 소개</a></li>
                             <li class="nav-item"><a class="nav-link smooth-scroll" href="#map">오시는 길</a></li>
                         </ul>
                     </div>
@@ -120,30 +86,30 @@
                 </div>
             </div>
         </div>
-        <div class="ww-section bg-light" id="events">
+        <div class="ww-section bg-light" id="list">
             <div class="container ww-wedding-event">
                 <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Sunflower', sans-serif;">음악회 곡 리스트</h2>
                 <div>
                     <h3 class="h2 text-center ww-title" style="font-family: 'Sunflower', sans-serif; font-size:1.5em">
                         이노주사 - 행복 <br><br>
                         히사이시 조 - Village in May (초등부) <br><br>
-                        Geoff Bullock - 주께 가오니 (편곡 : 기가람 에드몬드) <br><br>
+                        Geoff Bullock - 주께 가오니 <span class="blue-text">(편곡 : 기가람 에드몬드)</span> <br><br>
                         하늘바라기 - 너의 죄를 씻으니 <br><br>
                         띠앗머리 - 교우들 보아라 <br><br>
                         엠씨더맥스 - 붉은 노을 <br><br>
                         권성일 - 그분께로 한 걸음씩 <br><br>
                         김진호 - 가족사진 <br><br>
-                        꽃 (원곡자 넣어야함) <br><br>
-                        가자 갈릴래아로 (원곡자 넣어야함) <br><br>
+                        현덕 프란치스코 - 꽃 (중고등부) <br><br>
+                        권성일 미카엘 - 가자 갈릴래아로 (중고등부) <br><br>
                         이노주사 - 하느님 당신은 나의 모든 것 <br><br>
-                        전능하신 나의 주 하느님 (원곡자 넣어야함) <br><br>
+                        LAMP/Alda Celia - 전능하신 나의 주 하느님 <span class="blue-text">(편곡 : 기가람 에드몬드)</span> <br><br>
                         갓등중창단 - 아들아 <br><br>
-                        Fr. 김성훈 요사팟 - 주님의 기도 (편곡 : 기가람 에드몬드)
+                        Fr.김성훈 요사팟 - 주님의 기도
                     </h3>
                 </div>
             </div>
         </div>
-       <div class="ww-section parallax-window" id="gifts">
+       <div class="ww-section parallax-window" id="introduce">
             <div class="ww-gift-section">
                 <div class="container ww-wedding-event">
                     <h2 class="h1 text-center pb-3 ww-title" style="font-family: 'Sunflower', sans-serif;">우리 동탄반송동성당 청년들을 소개합니다.</h2>
@@ -158,13 +124,13 @@
                                 <img alt="유현준" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
                                     유현준 도미니코 <br>
-                                    (<span class="red-text">음악회 총괄 </span>, 일렉기타, 통기타, 보컬)
+                                    (음악회 총괄, 일렉기타, 통기타, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="우정제" class="img-fluid gift-img" src="images/members/luka.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 <br>
+                                    <span class="blue-text">우저예 루카</span> <br>
                                     (회장, 보컬)
                                 </div>
                             </div>
@@ -189,49 +155,152 @@
                                     (이벤트파트장, 보컬)
                                 </div>
                             </div>
+                        </div>
+                        <div class="gift-columns">
                             <div class="gift">
-                                <img alt="방인혜" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="주보라" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    주보라 유스티나 <br>
+                                    (지원파트장)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="방인혜" class="img-fluid gift-img" src="images/members/lydwina.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
                                     방인혜 리드비나 <br>
                                     (음악파트장, 피아노, 보컬)
                                 </div>
                             </div>
+                            <div class="gift">
+                                <img alt="기가람" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    기가람 에드몬드 <br>
+                                    (음악파트(편곡), 피아노, 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="기해수" class="img-fluid gift-img" src="images/members/johna.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    기해수 세례자요한 <br>
+                                    (장비파트, 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="김도영" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    김도영 프란치스카 <br>
+                                    (지원파트, 중고등부 총괄)
+                                </div>
+                            </div>
                         </div>
                         <div class="gift-columns">
                             <div class="gift">
-                                <img alt="유현준" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="김미리" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    유현준 도미니코 (총괄, 메인 기타)
+                                    김미리 빈첸시아 <br>
+                                    (이벤트파트, 베이스, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="김주희" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 (회장, 보컬)
+                                    김주희 로사 <br>
+                                    (지원파트, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="송건의" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 (회장, 보컬)
+                                    송건의 미카엘 <br>
+                                    (지원파트, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="송호찬" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 (회장, 보컬)
+                                    송호찬 사도요한 <br>
+                                    (지원파트, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <img alt="신정원" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 (회장, 보컬)
+                                    신정원 데오도라 <br>
+                                    (진행파트(MC), 율동찬양, 보컬)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gift-columns">
+                            <div class="gift">
+                                <img alt="안소윤" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    안소윤 유스티나 <br>
+                                    (이벤트파트, 율동찬양, 보컬)
                                 </div>
                             </div>
                             <div class="gift">
-                                <img alt="우정제" class="img-fluid gift-img gift-selected" src="images/members/dominic.jpeg"/>
+                                <img alt="이상원" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
                                 <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
-                                    우저예 루카 (회장, 보컬)
+                                    이상원 다니엘 <br>
+                                    (이벤트파트(영상편집), 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="이승현" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    이승현 소화데레사 <br>
+                                    (진행파트(MC), 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="이재완" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    이재완 바오로 <br>
+                                    (음악파트(밴드마스터), 기타, 드럼, 베이스, 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="이재완" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    이형준 테오도르 <br>
+                                    (지원파트, 보컬)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gift-columns">
+                            <div class="gift">
+                                <img alt="이호진" class="img-fluid gift-img" src="images/members/adabibiana.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    이호진 아다비비아나 <br>
+                                    (이벤트파트, 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="정기훈" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    정기훈 스테파노 <br>
+                                    (이벤트파트(사진담당))
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="조민섭" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    조민섭 스테파노 <br>
+                                    (지원파트, 보컬)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="조찬용" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    조찬용 에피파니오 <br>
+                                    (지원파트)
+                                </div>
+                            </div>
+                            <div class="gift">
+                                <img alt="최진수" class="img-fluid gift-img" src="images/members/dominic.jpeg"/>
+                                <div class="text-center" style="font-family: 'Sunflower', sans-serif;">
+                                    최진수 레오 <br>
+                                    (음악파트(보컬마스터), 보컬)
                                 </div>
                             </div>
                         </div>
