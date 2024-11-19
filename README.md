@@ -10,5 +10,4 @@ https://github.com/AndersonChoi/wedding-card 에서 forK 해온 후 양식에 �
 
 * 날짜 : 2024년 12월 14일 토요일
 * 장소 : 동탄반송동성당 2층 대성전
-* 초대장 url : https://lovegirlih.github.io/concert/
-
+* 초대 url : https://lovegirlih.github.io/concert/

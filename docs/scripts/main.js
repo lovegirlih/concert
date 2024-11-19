@@ -1,43 +1,60 @@
-// Add your javascript here
-// Don't forget to add it into respective layouts where this js file is needed
 $(document).ready(function () {
-    $("#map-image").on("click")
-    {
-
-    }
-
     $('#go-to-top').click(function () {
         $('html,body').animate({scrollTop: 0}, 400);
         return false;
     });
 
-    $(".members-send").click(function () {
-        $("#members-name").text($(this).data("name"));
-    })
+    function validateForm(formData) {
+        // 필수 입력 항목을 체크하는 로직
+        if (!formData.joinName) {
+            alert("이름을 입력해 주세요.");
+            return false; // 유효성 검사를 통과하지 못하면 false 반환
+        }
 
+        if (!formData.memberCount) {
+            alert("인원 수를 선택해 주세요.");
+            return false;
+        }
 
-    $("#reserveGiftButton").click(function () {
-        let name = $("#sender-name").val();
-        let message = $("#sender-message").val();
-        $("#reserveGiftButton").text("전송중...");
-        $("#reserveGiftButton").prop("disabled", true);
+        if (!formData.withCar) {
+            alert("차량 여부를 선택해 주세요.");
+            return false;
+        }
 
-        emailjs.init("user_yjLL5xG0A3kkOCH5BGIDh");
-        emailjs.send("wedding-mail", "gift_send", {
-            name: name,
-            gift: $("#members-name").text(),
-            message: message
-        }).then(function (response) {
-            $('#giftMailModal').modal('hide');
-            alert(name + "님의 메시지가 정상적으로 전송되었습니다.");
+        // 모든 필수 값이 입력된 경우 true 반환
+        return true;
+    }
 
-            $("#reserveGiftButton").text("예약하기!");
-            $("#sender-name").val('');
-            $("#sender-message").val('');
-            $("#reserveGiftButton").prop("disabled", false);
-        }, function (err) {
-            alert("메시지 전송이 실패했습니다. 다시 시도해주세요.");
-        });
+    $("#send").click(function () {
+        const formData = {
+            joinName: document.getElementById('join-name').value,
+            email: 'lovegirlih2@hamail.net',
+            message: document.getElementById('message').value,
+            memberCount: document.getElementById('memberCount').value,
+            withCar: document.getElementById('withCar').value
+        };
+
+        if (validateForm(formData)) {
+            $("#send").text("전송중...");
+            $("#send").prop("disabled", true);
+
+            emailjs.init({
+                publicKey: "NjVes-fKuq3CdGKdC",
+            });
+
+            emailjs.send('service_6om247t', 'template_v6ccxrb', formData, null).then(
+                (response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    $('#joinModal').modal('hide');
+                    alert(formData.joinName + "님의 참석여부 전달이 정상적으로 완료되었습니다.");
+                },
+                (error) => {
+                    console.log('FAILED...', error);
+                    $('#joinModal').modal('hide');
+                    alert("일시적인 에러로 참석여부 전달에 실패하였습니다. 한번만 다시 시도해 주실래요?");
+                },
+            );
+        }
     })
 })
 
