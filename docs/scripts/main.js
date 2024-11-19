@@ -11,8 +11,8 @@ $(document).ready(function () {
         return false;
     });
 
-    $(".gift-send").click(function () {
-        $("#gift-name").text($(this).data("name"));
+    $(".members-send").click(function () {
+        $("#members-name").text($(this).data("name"));
     })
 
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
         emailjs.init("user_yjLL5xG0A3kkOCH5BGIDh");
         emailjs.send("wedding-mail", "gift_send", {
             name: name,
-            gift: $("#gift-name").text(),
+            gift: $("#members-name").text(),
             message: message
         }).then(function (response) {
             $('#giftMailModal').modal('hide');
