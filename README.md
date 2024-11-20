@@ -2,7 +2,7 @@
 
 이 repository는 음악회 초대장입니다.
 
-https://github.com/AndersonChoi/wedding-card 에서 forK 해온 후 양식에 맞체 수정하였습니다.
+https://github.com/AndersonChoi/wedding-card 에서 forK 해온 후 양식에 맞게 수정하였습니다.
 
 ![메인사진](https://github.com/lovegirlih/concert/blob/main/docs/images/2024.jpg)
 
